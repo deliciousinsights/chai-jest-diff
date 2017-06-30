@@ -1,6 +1,6 @@
 {
   "name": "chai-jest-diff",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A plugin to make Chai’s equality assertions (shallow or deep) fail with Jest-like diffs",
   "main": "dist/index.js",
   "scripts": {
