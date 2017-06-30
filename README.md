@@ -29,4 +29,4 @@ The plugin factory accepts a boolean argument, `expand`, that mirrors Jest’s `
 
 © 2017 Delicious Insights
 
-This plugin is provided under the MIT license.  See [`LICENSE.md`](LICENSE.md) for details.
+This plugin is provided under the MIT license.  See [`LICENSE.md`](https://github.com/deliciousinsights/chai-jest-diff/blob/master/LICENSE.md) for details.

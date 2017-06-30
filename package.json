@@ -18,6 +18,7 @@
   ],
   "author": "Christophe Porteneuve <christophe@delicious-insights.com> (http://delicious-insights.com/)",
   "license": "MIT",
+  "repository": "https://github.com/deliciousinsights/chai-jest-diff",
   "homepage": "https://github.com/deliciousinsights/chai-jest-diff#readme",
   "bugs": "https://github.com/deliciousinsights/chai-jest-diff/issues",
   "dependencies": {
