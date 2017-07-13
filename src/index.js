@@ -30,6 +30,21 @@ export default function chaiJestDiff (expand = false) {
     })
     Assertion.addMethod('eql', assertEql)
     Assertion.addMethod('eqls', assertEql)
+
+    Assertion.overwriteMethod('members', createMethodWrapper(expand, (assertion) => {
+      const chainedFlags = [
+       flag(assertion, 'contains') ? 'include' : 'have'
+      ]
+      if (flag(assertion, 'ordered')) {
+        chainedFlags.push('ordered')
+      }
+      if (flag(assertion, 'deep')) {
+        chainedFlags.push('deep')
+      }
+      chainedFlags.push('members')
+
+      return chainedFlags.join('.')
+    }))
   }
 }
 
@@ -67,4 +82,27 @@ function createAssertion({ deepPassAssert, expand, flag, kind, name, passFx }) {
   result.displayName = name
 
   return result
+}
+
+function createMethodWrapper(expand, buildHint) {
+  return function wrapMethod(_super) {
+    return function wrappedAssertion() {
+      const fauxThis = Object.create(this);
+      fauxThis.assert = (pass, failMsg, failNegateMsg, expected, received, showDiff) => {
+        const hintParam = `.to.${buildHint(this)}`
+        failMsg = buildMessage({ expected, received, hintParam, introSuffix: cleanChaiMessage(failMsg), expand, showDiff })
+        failNegateMsg = buildMessage({ expected, received, hintParam: `.not${hintParam}`, introSuffix: cleanChaiMessage(failNegateMsg), expand, showDiff })
+        this.assert(pass, failMsg, failNegateMsg, expected, received, showDiff)
+      }
+
+      _super.apply(fauxThis, arguments)
+    }
+  }
+}
+
+function cleanChaiMessage(message) {
+  return message
+    .replace(/#{this}/g, 'value')
+    .replace(/^Expected (value )?/i, '')
+    .replace(/( as)? #{exp}$/, '')
 }

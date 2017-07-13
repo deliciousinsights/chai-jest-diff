@@ -60,4 +60,36 @@ describe('Jest-style diffing', () => {
       expect([1, 2]).not.to.deep.equal([1, 2])
     }).to.throw(/Expected value not to deep equal:.*\[1, 2\].*Received:.*\[1, 2\]/s)
   })
+
+  it('should work for member assertions', () => {
+    expect(() => {
+      expect([1, 2]).to.have.members([1, 2, 3])
+    }).to.throw(/Expected value to have the same members:.*\[1, 2, 3\].*Received:.*\[1, 2\]/s)
+  })
+
+  it('should work for ordered member assertions', () => {
+    expect(() => {
+      expect([1, 2]).to.have.ordered.members([2, 1])
+    }).to.throw(/Expected value to have the same ordered members:.*\[2, 1\].*Received:.*\[1, 2\]/s)
+  })
+
+  it('should work for contained member assertions', () => {
+    expect(() => {
+      expect([1]).to.include.members([1, 2])
+    }).to.throw(/Expected value to be a superset of:.*\[1, 2\].*Received:.*\[1\]/s)
+  })
+
+  it('should work for negated member assertions', () => {
+    expect(() => {
+      expect([1, 2]).not.to.have.members([1, 2])
+    }).to.throw(/Expected value to not have the same members:.*\[1, 2\].*Received:.*\[1, 2\]/s)
+
+    expect(() => {
+      expect([1, 2]).not.to.have.ordered.members([1, 2])
+    }).to.throw(/Expected value to not have the same ordered members:.*\[1, 2\].*Received:.*\[1, 2\]/s)
+
+    expect(() => {
+      expect([1]).not.to.include.members([1])
+    }).to.throw(/Expected value to not be a superset of:.*\[1\].*Received:.*\[1\]/s)
+  })
 })
