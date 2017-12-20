@@ -1,7 +1,8 @@
 {
   "name": "chai-jest-diff",
   "version": "1.0.1",
-  "description": "A plugin to make Chai’s equality assertions (shallow or deep) fail with Jest-like diffs",
+  "description":
+    "A plugin to make Chai’s equality assertions (shallow or deep) fail with Jest-like diffs",
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist --no-comments --ignore '*.spec.js'",
@@ -9,14 +10,9 @@
     "prepare": "npm run clean && npm run build",
     "test": "jest"
   },
-  "keywords": [
-    "chai",
-    "jest",
-    "diff",
-    "tests",
-    "plugin"
-  ],
-  "author": "Christophe Porteneuve <christophe@delicious-insights.com> (http://delicious-insights.com/)",
+  "keywords": ["chai", "jest", "diff", "tests", "plugin"],
+  "author":
+    "Christophe Porteneuve <christophe@delicious-insights.com> (http://delicious-insights.com/)",
   "license": "MIT",
   "repository": "https://github.com/deliciousinsights/chai-jest-diff",
   "homepage": "https://github.com/deliciousinsights/chai-jest-diff#readme",
@@ -38,14 +34,10 @@
   },
   "peerDependencies": {
     "chai": "^4.0.2",
-    "jest": "^20.0.4"
+    "jest": ">= 20"
   },
   "babel": {
-    "presets": [
-      "env"
-    ],
-    "plugins": [
-      "transform-dotall-regex"
-    ]
+    "presets": ["env"],
+    "plugins": ["transform-dotall-regex"]
   }
 }
