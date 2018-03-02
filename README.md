@@ -16,7 +16,7 @@ On the other hand, it currently doesn’t provide it for `.property` value testi
 
 ```js
 const chai = require('chai')
-const chaiJestDiff = require('chai-jest-diff')
+const chaiJestDiff = require('chai-jest-diff').default
 
 chai.use(chaiJestDiff())
 ```
