@@ -37,8 +37,7 @@
     "rimraf": "^2.6.1"
   },
   "peerDependencies": {
-    "chai": "^4.0.2",
-    "jest": ">= 20"
+    "chai": "^4.0.2"
   },
   "babel": {
     "presets": [
